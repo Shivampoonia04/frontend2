@@ -14,15 +14,17 @@ function App() {
   return (
     <Router>
       <Header />
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/chatbot" element={<ChatbotPage />} />
-        <Route path="/translator" element={<TranslatorPage />} />
-        <Route path="/faq" element={<FaqPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/" element={<LoginPage />} /> {/* Default route */}
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/chatbot" element={<ChatbotPage />} />
+          <Route path="/translator" element={<TranslatorPage />} />
+          <Route path="/faq" element={<FaqPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/" element={<HomePage />} /> {/* Default route changed to HomePage */}
+        </Routes>
+      </main>
       <Footer />
     </Router>
   );
