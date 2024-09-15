@@ -1,0 +1,16 @@
+.home-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .services {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .service-link {
+    text-decoration: none;
+    color: #007BFF;
+    font-size: 18px;
+  }
+  

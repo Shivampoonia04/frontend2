@@ -1,0 +1,31 @@
+.faq-container {
+    padding: 20px;
+  }
+  
+  .add-faq {
+    margin-bottom: 20px;
+  }
+  
+  .add-faq input, .add-faq textarea {
+    margin-bottom: 10px;
+  }
+  
+  .faq-list {
+    margin-top: 20px;
+  }
+  
+  .faq-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .faq-item button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+  }
+  

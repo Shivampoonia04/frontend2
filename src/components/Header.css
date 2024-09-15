@@ -1,0 +1,18 @@
+.header {
+    background-color: #007BFF;
+    padding: 10px;
+    color: white;
+  }
+  
+  .header nav {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
+  }
+  

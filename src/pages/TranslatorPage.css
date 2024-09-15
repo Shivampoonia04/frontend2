@@ -1,0 +1,15 @@
+.translator-container {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  textarea {
+    height: 100px;
+  }
+  
+  .translated-result {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
