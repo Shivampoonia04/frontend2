@@ -4,10 +4,13 @@ import './Header.css';
 
 const Header = () => {
   return (
-    <header className="header">
-      <nav>
-        <Link to="/home">Home</Link>
-        <Link to="/about">About</Link>
+    <header className="header" role="banner" aria-label="Header">
+      <nav aria-label="Main Navigation">
+        <ul>
+          <li><Link to="/home">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+          {/* Add more links here as needed */}
+        </ul>
       </nav>
     </header>
   );
