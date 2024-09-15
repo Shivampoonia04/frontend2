@@ -9,12 +9,12 @@ import AboutPage from './pages/AboutPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './styles/global.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Switch>
+    <Router>
+      <Routes>
         <Route path="/login" component={LoginPage} />
         <Route path="/home" component={HomePage} />
         <Route path="/chatbot" component={ChatbotPage} />
@@ -22,10 +22,9 @@ function App() {
         <Route path="/faq" component={FaqPage} />
         <Route path="/about" component={AboutPage} />
         <Route path="/" exact component={LoginPage} />
-      </Switch>
-      <Footer />
-    </div>
-  );
+      </Routes>
+      </Router>
+      );
 }
 
 export default App;
