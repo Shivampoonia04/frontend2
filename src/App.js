@@ -1,6 +1,5 @@
 import React from 'react';
-import { Switch, BrowserRouter as Router } from 'react-router-dom';
-import { Route} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import Routes from react-router-dom
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import ChatbotPage from './pages/ChatbotPage';
@@ -14,17 +13,19 @@ import './styles/global.css';
 function App() {
   return (
     <Router>
+      <Header />
       <Routes>
-        <Route path="/login" component={LoginPage} />
-        <Route path="/home" component={HomePage} />
-        <Route path="/chatbot" component={ChatbotPage} />
-        <Route path="/translator" component={TranslatorPage} />
-        <Route path="/faq" component={FaqPage} />
-        <Route path="/about" component={AboutPage} />
-        <Route path="/" exact component={LoginPage} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/chatbot" element={<ChatbotPage />} />
+        <Route path="/translator" element={<TranslatorPage />} />
+        <Route path="/faq" element={<FaqPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/" element={<LoginPage />} /> {/* Default route */}
       </Routes>
-      </Router>
-      );
+      <Footer />
+    </Router>
+  );
 }
 
 export default App;
