@@ -9,6 +9,7 @@ import AboutPage from './pages/AboutPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './styles/global.css';
+import { Switch } from 'react-router-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
