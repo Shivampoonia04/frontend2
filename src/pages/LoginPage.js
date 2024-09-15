@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Updated import
 import './LoginPage.css';
 
 const LoginPage = () => {
   const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
-  const history = useHistory();
+  const navigate = useNavigate(); // Updated from useHistory
 
   const handleLogin = () => {
     if (userId === 'user' && password === 'password') {
-      history.push('/home');
+      navigate('/home'); // Updated from history.push
     } else {
       alert('Invalid credentials');
     }
