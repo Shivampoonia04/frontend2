@@ -1,3 +1,3 @@
-[submodule "fresh-project"]
-    path = fresh-project
+[submodule "frontend"]
+    path = frontend
     url = https://github.com/Shivampoonia04/frontend.git
