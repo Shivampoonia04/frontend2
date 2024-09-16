@@ -6,11 +6,12 @@ const handleFetchErrors = async (response) => {
     let errorMessage;
     try {
       const errorData = await response.json();
-      errorMessage = errorData.message || 'An error occurred while fetching data';
-    } catch {
+      errorMessage = errorData.message || errorData.error || 'An error occurred while fetching data';
+    } catch (error) {
       errorMessage = await response.text();
     }
     const statusCode = response.status;
+    console.error(`Fetch Error: Status ${statusCode}, Message: ${errorMessage}`);
     throw new Error(`Error ${statusCode}: ${errorMessage}`);
   }
   return response;
@@ -25,7 +26,7 @@ export const getFaqs = async () => {
     return response.json();
   } catch (error) {
     console.error('Error fetching FAQs:', error);
-    throw error;
+    throw error; // Re-throw error for further handling
   }
 };
 
@@ -42,7 +43,7 @@ export const createFaq = async (faq) => {
     return response.json();
   } catch (error) {
     console.error('Error creating FAQ:', error);
-    throw error;
+    throw error; // Re-throw error for further handling
   }
 };
 
@@ -59,7 +60,7 @@ export const updateFaq = async (id, faq) => {
     return response.json();
   } catch (error) {
     console.error('Error updating FAQ:', error);
-    throw error;
+    throw error; // Re-throw error for further handling
   }
 };
 
@@ -74,6 +75,6 @@ export const deleteFaq = async (id) => {
     return response.json();
   } catch (error) {
     console.error('Error deleting FAQ:', error);
-    throw error;
+    throw error; // Re-throw error for further handling
   }
 };
