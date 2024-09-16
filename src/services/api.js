@@ -25,7 +25,7 @@ export const getFaqs = async () => {
     return response.json();
   } catch (error) {
     console.error('Error fetching FAQs:', error);
-    throw error; // Re-throw error for further handling
+    throw error;
   }
 };
 
@@ -42,7 +42,7 @@ export const createFaq = async (faq) => {
     return response.json();
   } catch (error) {
     console.error('Error creating FAQ:', error);
-    throw error; // Re-throw error for further handling
+    throw error;
   }
 };
 
@@ -59,7 +59,7 @@ export const updateFaq = async (id, faq) => {
     return response.json();
   } catch (error) {
     console.error('Error updating FAQ:', error);
-    throw error; // Re-throw error for further handling
+    throw error;
   }
 };
 
@@ -74,6 +74,6 @@ export const deleteFaq = async (id) => {
     return response.json();
   } catch (error) {
     console.error('Error deleting FAQ:', error);
-    throw error; // Re-throw error for further handling
+    throw error;
   }
 };
