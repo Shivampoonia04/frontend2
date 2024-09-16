@@ -1,5 +1,5 @@
 // Ensure that you only define API_URL once
-const API_URL = process.env.NODE_OPTIONS_URL || 'http://localhost:5000';
+const API_URL = process.env.NODE_OPTIONS_URL||'http://localhost:5000';
 
 // Helper function to handle fetch errors
 const handleFetchErrors = async (response) => {
