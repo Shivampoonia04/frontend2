@@ -11,6 +11,7 @@ const FaqPage = () => {
   useEffect(() => {
     const fetchFaqs = async () => {
       try {
+        setLoading(true);
         const result = await getFaqs();
         setFaqs(result);
       } catch (error) {
@@ -78,19 +79,15 @@ const FaqPage = () => {
         </button>
       </div>
       <div className="faq-list">
-        {faqs.length > 0 ? (
-          faqs.map((faq) => (
-            <div key={faq.id} className="faq-item">
-              <h3>{faq.question}</h3>
-              <p>{faq.answer}</p>
-              <button onClick={() => handleDeleteFaq(faq.id)} disabled={loading}>
-                {loading ? 'Deleting...' : 'Delete'}
-              </button>
-            </div>
-          ))
-        ) : (
-          <p>No FAQs available</p>
-        )}
+        {faqs.map((faq) => (
+          <div key={faq.id} className="faq-item">
+            <h3>{faq.question}</h3>
+            <p>{faq.answer}</p>
+            <button onClick={() => handleDeleteFaq(faq.id)} disabled={loading}>
+              {loading ? 'Deleting...' : 'Delete'}
+            </button>
+          </div>
+        ))}
       </div>
     </div>
   );
