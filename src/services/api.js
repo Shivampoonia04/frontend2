@@ -6,8 +6,8 @@ const handleFetchErrors = async (response) => {
     let errorMessage;
     try {
       const errorData = await response.json();
-      errorMessage = errorData.message || errorData.error || 'An error occurred while fetching data';
-    } catch (error) {
+      errorMessage = errorData.message || 'An error occurred while fetching data';
+    } catch {
       errorMessage = await response.text();
     }
     const statusCode = response.status;
