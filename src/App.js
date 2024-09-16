@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import ChatbotPage from './pages/ChatbotPage';
@@ -12,7 +12,7 @@ import './styles/global.css';
 
 function App() {
   return (
-    <Router>
+    <>
       <Header />
       <Routes>
         <Route path="/login" element={<LoginPage />} />
@@ -24,7 +24,7 @@ function App() {
         <Route path="/" element={<LoginPage />} /> {/* Default route */}
       </Routes>
       <Footer />
-    </Router>
+    </>
   );
 }
 
