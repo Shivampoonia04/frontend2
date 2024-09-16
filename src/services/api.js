@@ -1,12 +1,20 @@
 // Ensure that you only define API_URL once
-const API_URL = process.env.NODE_OPTIONS_URL||'http://localhost:5000';
+const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
 // Helper function to handle fetch errors
 const handleFetchErrors = async (response) => {
   if (!response.ok) {
-    const errorMessage = await response.text(); // Get error message from response
+    let errorMessage;
+    try {
+      // Try to get the error message from JSON response
+      const errorData = await response.json();
+      errorMessage = errorData.message || errorData.error || 'An error occurred while fetching data';
+    } catch (error) {
+      // Fallback to text if JSON parsing fails
+      errorMessage = await response.text();
+    }
     const statusCode = response.status;
-    throw new Error(`Error ${statusCode}: ${errorMessage || 'An error occurred while fetching data'}`);
+    throw new Error(`Error ${statusCode}: ${errorMessage}`);
   }
   return response;
 };
