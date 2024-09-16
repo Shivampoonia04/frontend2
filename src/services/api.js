@@ -65,4 +65,10 @@ export const deleteFaq = async (id) => {
     const response = await fetch(`${API_URL}/faqs/${id}`, {
       method: 'DELETE',
     });
-    
+    await handleFetchErrors(response);
+    return response.json();
+  } catch (error) {
+    console.error('Error deleting FAQ:', error);
+    throw error; // Re-throw error for further handling
+  }
+};
