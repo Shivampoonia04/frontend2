@@ -5,7 +5,8 @@ const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 const handleFetchErrors = async (response) => {
   if (!response.ok) {
     const errorMessage = await response.text(); // Get error message from response
-    throw new Error(errorMessage || 'An error occurred while fetching data');
+    const statusCode = response.status;
+    throw new Error(`Error ${statusCode}: ${errorMessage || 'An error occurred while fetching data'}`);
   }
   return response;
 };
@@ -13,6 +14,7 @@ const handleFetchErrors = async (response) => {
 // Function to fetch FAQs
 export const getFaqs = async () => {
   try {
+    console.log(`Fetching FAQs from: ${API_URL}/faqs`);
     const response = await fetch(`${API_URL}/faqs`);
     await handleFetchErrors(response);
     return response.json();
@@ -25,6 +27,7 @@ export const getFaqs = async () => {
 // Function to create a new FAQ
 export const createFaq = async (faq) => {
   try {
+    console.log(`Creating FAQ at: ${API_URL}/faqs`);
     const response = await fetch(`${API_URL}/faqs`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -41,6 +44,7 @@ export const createFaq = async (faq) => {
 // Function to update an existing FAQ
 export const updateFaq = async (id, faq) => {
   try {
+    console.log(`Updating FAQ ${id} at: ${API_URL}/faqs/${id}`);
     const response = await fetch(`${API_URL}/faqs/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -57,13 +61,8 @@ export const updateFaq = async (id, faq) => {
 // Function to delete an FAQ
 export const deleteFaq = async (id) => {
   try {
+    console.log(`Deleting FAQ ${id} at: ${API_URL}/faqs/${id}`);
     const response = await fetch(`${API_URL}/faqs/${id}`, {
       method: 'DELETE',
     });
-    await handleFetchErrors(response);
-    return response.json();
-  } catch (error) {
-    console.error('Error deleting FAQ:', error);
-    throw error; // Re-throw error for further handling
-  }
-};
+    
