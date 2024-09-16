@@ -36,12 +36,21 @@ export const getFaqs = async () => {
 export const createFaq = async (faq) => {
   try {
     console.log(`Creating FAQ at: ${API_URL}/faqs`);
+    console.log('Request Body:', JSON.stringify(faq)); // Log the request body
+
     const response = await fetch(`${API_URL}/faqs`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(faq),
     });
+
+    // Check if response is okay
     await handleFetchErrors(response);
+
+    // Log the response status and headers
+    console.log('Response Status:', response.status);
+    console.log('Response Headers:', response.headers.raw());
+
     return response.json();
   } catch (error) {
     console.error('Error creating FAQ:', error);
