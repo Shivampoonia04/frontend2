@@ -1,4 +1,3 @@
-// Ensure that you only define API_URL once
 const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
 // Helper function to handle fetch errors
@@ -6,11 +5,9 @@ const handleFetchErrors = async (response) => {
   if (!response.ok) {
     let errorMessage;
     try {
-      // Try to get the error message from JSON response
       const errorData = await response.json();
       errorMessage = errorData.message || errorData.error || 'An error occurred while fetching data';
     } catch (error) {
-      // Fallback to text if JSON parsing fails
       errorMessage = await response.text();
     }
     const statusCode = response.status;
@@ -36,19 +33,12 @@ export const getFaqs = async () => {
 export const createFaq = async (faq) => {
   try {
     console.log(`Creating FAQ at: ${API_URL}/faqs`);
-    console.log('Request Body:', JSON.stringify(faq)); // Log the request body
-
     const response = await fetch(`${API_URL}/faqs`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(faq),
     });
-
     await handleFetchErrors(response);
-
-    console.log('Response Status:', response.status);
-    console.log('Response Headers:', response.headers.raw());
-
     return response.json();
   } catch (error) {
     console.error('Error creating FAQ:', error);
