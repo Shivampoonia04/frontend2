@@ -9,9 +9,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  {
-  "homepage": "."
-},
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
