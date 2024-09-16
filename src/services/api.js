@@ -1,13 +1,20 @@
 // Ensure that you only define API_URL once
 const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
+// Helper function to handle fetch errors
+const handleFetchErrors = async (response) => {
+  if (!response.ok) {
+    const errorMessage = await response.text(); // Get error message from response
+    throw new Error(errorMessage || 'An error occurred while fetching data');
+  }
+  return response;
+};
+
 // Function to fetch FAQs
 export const getFaqs = async () => {
   try {
     const response = await fetch(`${API_URL}/faqs`);
-    if (!response.ok) {
-      throw new Error('Failed to fetch FAQs');
-    }
+    await handleFetchErrors(response);
     return response.json();
   } catch (error) {
     console.error('Error fetching FAQs:', error);
@@ -23,9 +30,7 @@ export const createFaq = async (faq) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(faq),
     });
-    if (!response.ok) {
-      throw new Error('Failed to create FAQ');
-    }
+    await handleFetchErrors(response);
     return response.json();
   } catch (error) {
     console.error('Error creating FAQ:', error);
@@ -41,9 +46,7 @@ export const updateFaq = async (id, faq) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(faq),
     });
-    if (!response.ok) {
-      throw new Error('Failed to update FAQ');
-    }
+    await handleFetchErrors(response);
     return response.json();
   } catch (error) {
     console.error('Error updating FAQ:', error);
@@ -57,9 +60,7 @@ export const deleteFaq = async (id) => {
     const response = await fetch(`${API_URL}/faqs/${id}`, {
       method: 'DELETE',
     });
-    if (!response.ok) {
-      throw new Error('Failed to delete FAQ');
-    }
+    await handleFetchErrors(response);
     return response.json();
   } catch (error) {
     console.error('Error deleting FAQ:', error);
